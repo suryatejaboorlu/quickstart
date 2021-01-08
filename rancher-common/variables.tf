@@ -158,7 +158,11 @@ variable "private_registry_password" {
   description = "Specify private registry's password"
   default     = null
 }
-
+variable "use_bundled_system_chart" {
+  type        = string
+  description = "To use system charts without pulling it from remote"
+  default     = true
+}
 # Required
 variable "rancher_server_dns" {
   type        = string
