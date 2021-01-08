@@ -81,6 +81,14 @@ resource "helm_release" "rancher_server" {
       value = var.use_private_ca
     }
   }
+  
+  dynamic "set" {
+    for_each = var.use_bundled_system_chart ? [1]: []
+    content {
+      name = "useBundledSystemChart"
+      value = var.use_bundled_system_chart
+    }
+  }
 
   dynamic "set" {
     for_each = var.rancher_image_registry_username != null ? [1] : []
